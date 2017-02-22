@@ -26,6 +26,7 @@ app.post('/login', function (req, res) {
     console.log('login click');
     console.log(req.body.username);
     console.log(req.body.password);
+    res.send({status:0,msg:'登录成功'});
 });
 
 const server = app.listen(8080);
