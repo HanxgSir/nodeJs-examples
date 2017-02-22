@@ -10,28 +10,42 @@ import Button from 'antd/lib/button';
 import Checkbox  from 'antd/lib/checkbox';
 
 const FormItem = Form.Item;
-class Index extends React.Component {
+class Login extends React.Component {
     constructor(props) {
         super(props);
-        this.login = this.login.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     render() {
+        const { getFieldDecorator } = this.props.form;
         return (
             <div className="contentBox">
                 <div className="form_box">
-                    <Form>
+                    <Form onSubmit={this.handleSubmit} className="login-form">
                         <FormItem>
-                            <Input addonBefore={<Icon type="user" />} placeholder="用户名" ref="username"/>
+                            {getFieldDecorator('username', {
+                                rules: [{required: true, message: 'Please input your username!'}]
+                            })(
+                                <Input addonBefore={<Icon type="user" />} placeholder="Username"/>
+                            )}
                         </FormItem>
                         <FormItem>
-                            <Input addonBefore={<Icon type="lock" />} type="password" placeholder="密码" ref="password"/>
+                            {getFieldDecorator('password', {
+                                rules: [{required: true, message: 'Please input your Password!'}]
+                            })(
+                                <Input addonBefore={<Icon type="lock" />} type="password" placeholder="Password"/>
+                            )}
                         </FormItem>
                         <FormItem>
-                            <Checkbox>记住密码</Checkbox>
-                            <a className="login-form-forgot">忘记密码</a>
-                            <Button type="primary" htmlType="submit" className="login-form-button" onClick={this.login}>
-                                登录
+                            {getFieldDecorator('remember', {
+                                valuePropName: 'checked',
+                                initialValue: true
+                            })(
+                                <Checkbox>Remember me</Checkbox>
+                            )}
+                            <a className="login-form-forgot">Forgot password</a>
+                            <Button type="primary" htmlType="submit" className="login-form-button">
+                                Log in
                             </Button>
                             Or <a>register now!</a>
                         </FormItem>
@@ -45,17 +59,20 @@ class Index extends React.Component {
 
     }
 
-    login(){
-        console.log('log');
-        let params = {
-            username:this.refs.username.value,
-            password:this.refs.password.value
-        };
-        $.post('/login',params,function(data){
-            console.log('success');
-            console.log('success',data);
-        })
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.form.validateFields((err, values) => {
+            if (!err) {
+                console.log(values);
+                $.post('/login', values, function (data) {
+                    console.log('success');
+                    console.log(data);
+                }.bind(this))
+            }
+        });
     }
 }
+
+const Index = Form.create()(Login);
 
 render(<Index />, document.getElementById('container'));
