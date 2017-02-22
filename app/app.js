@@ -25,6 +25,7 @@ app.get('/', function (req, res) {
 app.post('/login', function (req, res) {
     console.log('login click');
     console.log(req.body.username);
+    console.log(req.body.password);
 });
 
 const server = app.listen(8080);
