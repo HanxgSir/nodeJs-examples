@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 
 app.get('/', function (req, res) {
     console.log('server is start ');
-    res.render('index/index')
+    res.render('login/login')
 });
 
 app.post('/login', function (req, res) {
