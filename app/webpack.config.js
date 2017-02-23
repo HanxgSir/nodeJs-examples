@@ -4,7 +4,8 @@ var CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin");
 
 module.exports = {
     entry: {
-        'login': ['./src/login/login.js']
+        'login': ['./src/login/login.js'],
+        'register': ['./src/register/register.js']
     },
     output: {
         path: path.resolve(__dirname, 'public/static'),
