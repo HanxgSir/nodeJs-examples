@@ -24,16 +24,16 @@ class Login extends React.Component {
                     <Form onSubmit={this.handleSubmit} className="login-form">
                         <FormItem>
                             {getFieldDecorator('username', {
-                                rules: [{required: true, message: 'Please input your username!'}]
+                                rules: [{required: true, message: '请输入用户名！'}]
                             })(
-                                <Input addonBefore={<Icon type="user" />} placeholder="Username"/>
+                                <Input addonBefore={<Icon type="user" />} placeholder="用户名"/>
                             )}
                         </FormItem>
                         <FormItem>
                             {getFieldDecorator('password', {
-                                rules: [{required: true, message: 'Please input your Password!'}]
+                                rules: [{required: true, message: '请输入密码！'}]
                             })(
-                                <Input addonBefore={<Icon type="lock" />} type="password" placeholder="Password"/>
+                                <Input addonBefore={<Icon type="lock" />} type="password" placeholder="密码"/>
                             )}
                         </FormItem>
                         <FormItem>
@@ -41,13 +41,13 @@ class Login extends React.Component {
                                 valuePropName: 'checked',
                                 initialValue: true
                             })(
-                                <Checkbox>Remember me</Checkbox>
+                                <Checkbox>记住密码</Checkbox>
                             )}
-                            <a className="login-form-forgot">Forgot password</a>
+                            <a className="login-form-forgot">忘记密码</a>
                             <Button type="primary" htmlType="submit" className="login-form-button">
-                                Log in
+                               登录
                             </Button>
-                            Or <a>register now!</a>
+                            没有帐号？ <a href="/register" className="register_btn">快来注册吧!</a>
                         </FormItem>
                     </Form>
                 </div>
