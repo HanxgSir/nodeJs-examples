@@ -1,0 +1,11 @@
+.contentBox {
+    width: 1000px;
+    margin: 0 auto;
+}
+
+.register_box {
+    border: 1px solid #ccc;
+    width: 800px;
+    margin: 20px auto;
+    padding: 15px;
+}
