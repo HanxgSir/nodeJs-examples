@@ -14,19 +14,8 @@ app.set('views', __dirname + '/tpl');   // 设置模板相对路径（相对当�
 app.use(cookieParser());
 app.use(bodyParse.urlencoded({extended: false}));
 
-// 设置静态路径
+// 设置静态文件路径
 app.use(express.static(path.join(__dirname, '/public')));
+require('./routes/route.js')(app);
 
-app.get('/', function (req, res) {
-    console.log('server is start ');
-    res.render('login/login')
-});
-
-app.post('/login', function (req, res) {
-    console.log('login click');
-    console.log(req.body.username);
-    console.log(req.body.password);
-    res.send({status:0,msg:'登录成功'});
-});
-
-const server = app.listen(8080);
+const server = app.listen(8000);
