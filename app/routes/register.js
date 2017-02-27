@@ -25,7 +25,7 @@ module.exports = function (app) {
                         res.sendStatus(500);
                     } else {
                         //req.session.error = '用户名创建成功！';
-                        res.send({status:0,msg:"用户名创建成功"});
+                        res.send({status:0,msg:"注册成功"});
                     }
                 });
             }

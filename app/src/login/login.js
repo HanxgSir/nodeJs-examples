@@ -65,7 +65,7 @@ class Login extends React.Component {
             if (!err) {
                 console.log(values);
                 $.post('/login', values, function (data) {
-                    console.log(data.msg);
+                    console.log(data);
                 }.bind(this))
             }
         });
