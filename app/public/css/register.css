@@ -10,6 +10,11 @@
     padding: 15px;
 }
 
-.loginBtn{
+.loginBtn {
     float: right;
+    color: #108ee9;
+}
+
+.loginBtn:hover {
+    color: #ef1700;
 }
