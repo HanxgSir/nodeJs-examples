@@ -9,3 +9,7 @@
     margin: 20px auto;
     padding: 15px;
 }
+
+.loginBtn{
+    float: right;
+}

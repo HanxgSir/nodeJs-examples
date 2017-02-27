@@ -154,6 +154,7 @@ class RegisterComponent extends React.Component {
                         </FormItem>
                         <FormItem {...tailFormItemLayout}>
                             <Button type="primary" htmlType="submit" size="large">注册</Button>
+                            <a href="/" className="loginBtn">已有帐号，快去登录</a>
                         </FormItem>
                     </Form>
                 </div>
