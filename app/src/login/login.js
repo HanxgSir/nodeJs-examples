@@ -45,7 +45,7 @@ class Login extends React.Component {
                             )}
                             <a className="login-form-forgot">忘记密码</a>
                             <Button type="primary" htmlType="submit" className="login-form-button">
-                               登录
+                                登录
                             </Button>
                             没有帐号？ <a href="/register" className="register_btn">快来注册吧!</a>
                         </FormItem>
@@ -66,6 +66,12 @@ class Login extends React.Component {
                 console.log(values);
                 $.post('/login', values, function (data) {
                     console.log(data);
+                    if (data.status == 0) {
+                        location.href = "/home"
+                    }
+                    else {
+                        console.log(data);
+                    }
                 }.bind(this))
             }
         });
