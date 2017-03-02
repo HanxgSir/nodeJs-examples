@@ -4,5 +4,7 @@
 module.exports = function (app) {
     require('./login')(app);
     require('./register')(app);
+    require('./logout')(app);
     require('./home')(app);
+    require('./refer')(app);
 };

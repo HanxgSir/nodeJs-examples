@@ -3,6 +3,11 @@
  */
 module.exports = function (app) {
     app.route('/home').get(function (req, res) {
-        res.render('home/home');
+        if (req.session.user) {
+            res.render('home/home');
+        }
+        else {
+            res.redirect('/');
+        }
     })
 };
