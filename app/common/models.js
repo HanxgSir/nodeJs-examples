@@ -7,5 +7,12 @@ module.exports = {
         password: { type: String, required: true },
         email: { type: String, default: true },
         phone: { type: String, default: true }
+    },
+    bug:{
+        description:{type:String,required:true},
+        browser:{type:String,required:true},
+        level:{type:String,required:true},
+        user:{type:String,required:true},
+        date:{type:String,required:true}
     }
 };
