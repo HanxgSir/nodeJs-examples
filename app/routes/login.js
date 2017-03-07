@@ -19,7 +19,7 @@ module.exports = function (app) {
                 res.send({status: 1, msg: "密码错误"});
             }
             else {
-                res.cookie('username', name, {domain: '/',maxAge: 60 * 1000});
+                res.cookie('username', name, {domain: '/', maxAge: 14 * 24 * 60 * 60 * 1000});
                 req.session.user = name;
                 req.session.hasLogin = true;
                 req.session.cookie = {

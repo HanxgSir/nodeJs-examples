@@ -9,5 +9,13 @@ module.exports = function (app) {
         else {
             res.redirect('/');
         }
+    });
+
+    app.post('/home', function (req, res) {
+        let bug = global.dbHelper.getModel('bug');
+        bug.find(function (error, docs) {
+            console.log(docs);
+            res.send({bugs: docs,status:'0'});
+        })
     })
 };
