@@ -17,6 +17,7 @@ module.exports = function (app) {
         console.log('req',req.body);
         let Bug = global.dbHelper.getModel('bug');
         let dt  = moment().format('LLL');
+        let dtc = new Date();
         console.log(dt);
         Bug.create({
             description: req.body.description,
@@ -24,6 +25,7 @@ module.exports = function (app) {
             level: req.body.level,
             user: req.session.user,
             date: dt,
+            code: '' + dtc.getTime() + Math.ceil(Math.random()*10000),
             deleted:0
         }, function (error, doc) {
             if (error) {

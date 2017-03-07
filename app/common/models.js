@@ -14,6 +14,7 @@ module.exports = {
         level:{type:String,required:true},
         user:{type:String,required:true},
         date:{type:String,required:true},
+        code:{type:String,required:true},
         deleted:{type:String,required:true}
     }
 };

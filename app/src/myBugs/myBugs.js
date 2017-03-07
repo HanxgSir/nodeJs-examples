@@ -1,5 +1,5 @@
 /**
- * Created by Administrator on 2017/2/27.
+ * Created by Administrator on 2017/3/7.
  */
 import React from 'react';
 import { render } from 'react-dom';
@@ -8,30 +8,25 @@ import Input from 'antd/lib/input';
 import LeftBar from '../components/leftBar';
 import HeaderBar from '../components/headerBar';
 const Option = Select.Option;
-class Index extends React.Component {
+
+class MyBugs extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            level: 0,
-            status: -1,
             bugs: []
         };
         this.queryData = this.queryData.bind(this);
-        this.selectLevel = this.selectLevel.bind(this);
-        this.selectStatus = this.selectStatus.bind(this);
-        this.search = this.search.bind(this);
     }
 
     render() {
         return (
             <div className="contentBox">
                 <div className="search">
-                    <label className="code">
-                        编号：<Input type="text" ref="code" placeholder="请输入编号" style={{width:"195px"}}/>
-                    </label>
+                    <label className="code">编号：<Input type="text" placeholder="请输入编号"
+                                                      style={{width:"195px"}}/></label>
                     <label className="level">
                         级别：
-                        <Select style={{width:"120px"}} defaultValue={"0"} onChange={this.selectLevel}>
+                        <Select style={{width:"120px"}} defaultValue={"0"}>
                             <Option value={"0"}>全部</Option>
                             <Option value={"1"}>一级</Option>
                             <Option value={"2"}>二级</Option>
@@ -40,14 +35,14 @@ class Index extends React.Component {
                     </label>
                     <label className="status">
                         状态：
-                        <Select style={{width:"120px"}} defaultValue={"0"} onChange={this.selectStatus}>
-                            <Option value={"-1"}>全部</Option>
-                            <Option value={"0"}>待处理</Option>
-                            <Option value={"1"}>已处理</Option>
-                            <Option value={"2"}>已关闭</Option>
+                        <Select style={{width:"120px"}} defaultValue={"0"}>
+                            <Option value={"0"}>全部</Option>
+                            <Option value={"1"}>待处理</Option>
+                            <Option value={"2"}>已处理</Option>
+                            <Option value={"3"}>已关闭</Option>
                         </Select>
                     </label>
-                    <button className="search_btn" onClick={this.search}>查询</button>
+                    <button className="search_btn">查询</button>
                 </div>
                 <table>
                     <thead>
@@ -63,7 +58,7 @@ class Index extends React.Component {
 
                     {this.state.bugs.map(function (bug, index) {
                         return <tr key={"bug"+index}>
-                            <td>{bug.code}</td>
+                            <td>{index + 1}</td>
                             <td>{bug.level}</td>
                             <td>{bug.description}</td>
                             <td>{bug.user}</td>
@@ -80,42 +75,13 @@ class Index extends React.Component {
         )
     }
 
-    componentDidMount() {
-        this.queryData()
-    }
+    componentDidMound() {
 
-    selectLevel(value) {
-        this.setState({
-            level: value
-        })
     }
-
-    selectStatus(value) {
-        this.setState({
-            status: value
-        })
-    }
-
-    search() {
-        this.queryData();
-    }
-
 
     queryData() {
-        let params = {
-            code: this.refs.code.refs.input.value,
-            level: this.state.level,
-            status: this.state.status
-        };
-        $.post('/getBugs', params, function (data) {
-            console.log(data);
-            if (data.status == 0) {
-                this.setState({
-                    bugs: data.bugs
-                })
-            }
-        }.bind(this))
+        $.post('/home')
     }
 }
 
-render(<Index />, document.getElementById('container'));
+render(<MyBugs />,document.getElementById('container'));

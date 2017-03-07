@@ -7,7 +7,8 @@ module.exports = {
         'login': ['./src/login/login.js'],
         'register': ['./src/register/register.js'],
         'home': ['./src/home/home.js'],
-        'refer': ['./src/refer/refer.js']
+        'refer': ['./src/refer/refer.js'],
+        'myBugs': ['./src/myBugs/myBugs.js']
     },
     output: {
         path: path.resolve(__dirname, 'public/static'),

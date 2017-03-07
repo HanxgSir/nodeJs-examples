@@ -30,6 +30,17 @@ export default class LeftBar extends React.Component {
     }
 
     item_click(index) {
-        this.props.click_bar(index);
+        switch (index){
+            case 0:
+                location.href = "/home";
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                location.href = "/refer";
+                break;
+        }
     }
 }

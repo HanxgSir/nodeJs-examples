@@ -13,7 +13,6 @@ class Refer extends React.Component {
         this.state = {
             level: 1
         };
-        this.click_bar = this.click_bar.bind(this);
         this.selectLevel = this.selectLevel.bind(this);
         this.submit_bugs = this.submit_bugs.bind(this);
     }
@@ -43,18 +42,9 @@ class Refer extends React.Component {
                 </div>
                 <LeftBar
                     class="left_bar"
-                    click_bar={this.click_bar}
                 />
             </div>
         )
-    }
-
-    // 点击右侧导航栏
-    click_bar(index) {
-        console.log(index);
-        if (index == 0) {
-            location.href = "/home";
-        }
     }
 
     // 取select value
@@ -71,7 +61,6 @@ class Refer extends React.Component {
             browser: this.refs.browser.refs.input.value,
             level: this.state.level
         };
-        console.log(params);
         $.post('/refer', params, function (data) {
             console.log(data);
         })

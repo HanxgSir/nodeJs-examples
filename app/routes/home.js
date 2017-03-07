@@ -11,11 +11,25 @@ module.exports = function (app) {
         }
     });
 
-    app.post('/home', function (req, res) {
+    app.post('/getBugs', function (req, res) {
         let bug = global.dbHelper.getModel('bug');
-        bug.find(function (error, docs) {
+        let code = req.body.code;
+        let level = req.body.level;
+        let status = req.body.status;
+        let filter = {};
+        console.log(level);
+        if (level != 0) {
+            filter.level = level;
+        }
+        if (code != '') {
+            filter.code = code;
+        }
+        if (status != -1) {
+            filter.deleted = status;
+        }
+        bug.find(filter, function (error, docs) {
             console.log(docs);
-            res.send({bugs: docs,status:'0'});
+            res.send({bugs: docs, status: '0'});
         })
     })
 };
