@@ -35,6 +35,7 @@ export default class LeftBar extends React.Component {
                 location.href = "/home";
                 break;
             case 1:
+                location.href = "/mybugs";
                 break;
             case 2:
                 break;
