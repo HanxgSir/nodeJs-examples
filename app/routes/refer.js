@@ -26,6 +26,7 @@ module.exports = function (app) {
             user: req.session.user,
             date: dt,
             code: '' + dtc.getTime() + Math.ceil(Math.random()*10000),
+            handler: '',
             deleted:0
         }, function (error, doc) {
             if (error) {

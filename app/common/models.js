@@ -15,6 +15,7 @@ module.exports = {
         user:{type:String,required:true},
         date:{type:String,required:true},
         code:{type:String,required:true},
+        handler:{type:String,default:''},
         deleted:{type:String,required:true}
     }
 };

@@ -39,13 +39,30 @@ table thead tr th {
 }
 
 table thead tr th:nth-child(3) {
-    width: 380px;
+    width: auto;
 }
 
 table tbody tr td {
     height: 40px;
-    padding-left: 10px;
+    text-align: center;
     border: 1px solid #ccc;
+}
+
+table tbody tr td:nth-child(3) {
+    padding-left: 10px;
+    text-align: left;
+}
+
+.deal_btn{
+    display: inline-block;
+    width: 36px;
+    height: 25px;
+    text-align: center;
+    line-height: 25px;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    background: #108ee9;
 }
 
 .left_bar {

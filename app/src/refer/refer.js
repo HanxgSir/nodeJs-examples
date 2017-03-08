@@ -3,10 +3,21 @@
  */
 import React from 'react';
 import { render } from 'react-dom';
+import Modal from 'antd/lib/modal';
+import message from 'antd/lib/message';
 import Select from 'antd/lib/select';
 import Input from 'antd/lib/input';
 import LeftBar from '../components/leftBar';
+
 const Option = Select.Option;
+const messageCodeStyle = {
+    width: '300px',
+    height: '85px',
+    textAlign: 'center',
+    lineHeight: '85px',
+    fontWeight: 'bold'
+};
+
 class Refer extends React.Component {
     constructor(props) {
         super(props);
@@ -61,9 +72,21 @@ class Refer extends React.Component {
             browser: this.refs.browser.refs.input.value,
             level: this.state.level
         };
-        $.post('/refer', params, function (data) {
-            console.log(data);
-        })
+        Modal.confirm({
+            title: "提交bug",
+            content: '是否确认提交该bug',
+            onOk() {
+                $.post('/refer', params, function (data) {
+                    if (data.status == 0) {
+                        message.success(
+                            <div style={messageCodeStyle}>
+                                提交成功
+                            </div>
+                        );
+                    }
+                })
+            }
+        });
     }
 }
 
